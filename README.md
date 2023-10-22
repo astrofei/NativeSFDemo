@@ -21,8 +21,3 @@ main、main_bbq两个分支，提供了两种不同的写法。
 
 ![puan0-iz683](https://user-images.githubusercontent.com/18068017/146721508-e78d69ca-0e93-4ae6-b76a-94a7c62b5bc3.gif)
 
-#### 多屏情况下展示
-1. 通过dumpsys display 获取每一个屏幕的layerStack
-2. 执行adb shell NativeSFDemo -d layerStack，这样就可以显示到指定的屏幕上
-
-![录制_2023_10_22_15_54_34_808](https://github.com/yrzroger/NativeSFDemo/assets/18068017/2d1f0c41-7ac9-4dec-a887-c8d38b2bed7d)
