@@ -14,8 +14,8 @@
 
 namespace android {
 
-NativeSurfaceWrapper::NativeSurfaceWrapper(const String8& name, uint32_t layerStack) 
-    : mName(name), mLayerStack(layerStack) {}
+NativeSurfaceWrapper::NativeSurfaceWrapper(const String8& name) 
+    : mName(name) {}
 
 void NativeSurfaceWrapper::onFirstRef() {
     sp<SurfaceComposerClient> surfaceComposerClient = new SurfaceComposerClient;
@@ -47,7 +47,6 @@ void NativeSurfaceWrapper::onFirstRef() {
     SurfaceComposerClient::Transaction{}
             .setLayer(surfaceControl, std::numeric_limits<int32_t>::max())
             .show(surfaceControl)
-            .setLayerStack(surfaceControl, mLayerStack)
             .apply();
 
     mSurfaceControl = surfaceControl;
