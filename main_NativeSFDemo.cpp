@@ -92,7 +92,7 @@ int drawNativeSurface(sp<NativeSurfaceWrapper> nativeSurface) {
         goto handle_error;
     }
 
-    // 8. draw the ANativeWindow
+    // 8. Draw the ANativeWindow
     while(!mQuit) {
         // 9. dequeue a buffer
         int releaseFenceFd = -1;

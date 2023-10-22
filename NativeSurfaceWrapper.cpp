@@ -15,7 +15,7 @@
 namespace android {
 
 NativeSurfaceWrapper::NativeSurfaceWrapper(const String8& name) 
-    : mName(name) {}
+    : mName(name) { }
 
 void NativeSurfaceWrapper::onFirstRef() {
     sp<SurfaceComposerClient> surfaceComposerClient = new SurfaceComposerClient;
