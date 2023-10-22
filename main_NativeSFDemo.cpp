@@ -16,7 +16,6 @@
 using namespace android;
 
 bool mQuit = false;
-int mLayerStack = 0;
 
 void fillRGBA8Buffer(uint8_t* img, int width, int height, int stride, int r, int g, int b) {
     for (int y = 0; y < height; y++) {
@@ -96,40 +95,10 @@ void sighandler(int num) {
     }
 }
 
-static void usage(const char *me)
-{
-    fprintf(stderr, "\nusage: \t%s [options]\n"
-                    "\t--------------------------------------- options ------------------------------------------------\n"
-                    "\t[-h] help\n"
-                    "\t[-d] layer stack(In the case of multi-display, NativeSFDemo shows on the specified displays \n"
-                    "\t                 in addition to the primary display)\n"
-                    "\t------------------------------------------------------------------------------------------------\n",
-                    me);
-    exit(1);
-}
-
-void parseOptions(int argc, char **argv) {
-    const char *me = argv[0];
-    int res;
-    while((res = getopt(argc, argv, "d:")) >= 0) {
-        switch(res) {
-            case 'd':
-                mLayerStack = atoi(optarg);
-                break;
-            case 'h':
-            default:
-            {
-                usage(me);
-            }
-        }
-    }
-}
-
-int main(int argc, char ** argv) {
-    parseOptions(argc, argv);
+int main() {
     signal(SIGINT, sighandler);
 
-    sp<NativeSurfaceWrapper> nativeSurface(new NativeSurfaceWrapper(String8("NativeSFDemo"), mLayerStack));
+    sp<NativeSurfaceWrapper> nativeSurface(new NativeSurfaceWrapper(String8("NativeSFDemo")));
     drawNativeSurface(nativeSurface);
     return 0;
 }
